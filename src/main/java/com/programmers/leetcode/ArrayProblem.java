@@ -39,6 +39,4 @@ public class ArrayProblem {
         System.out.println("Arrays.toString(prices) = " + Arrays.toString(prices));
         return isEverPriceDown ? Arrays.stream(prices).max().getAsInt() : 0;
     }
-
-    
 }
