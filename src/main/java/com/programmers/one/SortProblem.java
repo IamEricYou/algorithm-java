@@ -17,7 +17,10 @@ public class SortProblem {
             answer.add(newArrayCopy[targetNumber]);
         }
 
-        return answer.stream().mapToInt(Integer::intValue).toArray();
+        return answer
+                .stream()
+                .mapToInt(Integer::intValue)
+                .toArray();
     }
 
     public static String biggestNumber(int[] numbers) {
@@ -25,7 +28,9 @@ public class SortProblem {
         ArrayList<String> stringComparingList = new ArrayList<String>();
         for (int num : numbers) {
             stringList.add(Integer.toString(num));
-            stringComparingList.add(Integer.toString(num).repeat(3));
+            stringComparingList.add(Integer
+                    .toString(num)
+                    .repeat(3));
         }
         stringComparingList.sort(Comparator.naturalOrder());
         Collections.reverse(stringComparingList);
@@ -36,14 +41,18 @@ public class SortProblem {
     }
 
     public static String biggestNumberNewVersion(int[] numbers) {
-        List<String> stringList = Arrays.stream(numbers).mapToObj(i -> String.valueOf(i)).collect(Collectors.toList());
-        Collections.sort(stringList, (string1, string2) -> (string2 + string1).compareTo(string1 + string2));
+        List<String> stringList = Arrays
+                .stream(numbers)
+                .mapToObj(String::valueOf)
+                .sorted((string1, string2) -> (string2 + string1).compareTo(string1 + string2))
+                .collect(Collectors.toList());
         return !(stringList.get(0).equals("0")) ? stringList.stream().collect(Collectors.joining()) : "0";
     }
 
     public static int hIndex(int[] citations) {
-        ArrayList<Integer> citationList = new ArrayList<Integer>(Arrays.stream(citations).boxed().collect(Collectors.toList()));
-        Collections.sort(citationList);
+        ArrayList<Integer> citationList = Arrays
+                .stream(citations)
+                .boxed().sorted().collect(Collectors.toCollection(ArrayList::new));
         for (int i = 0, citationListSize = citationList.size(); i < citationListSize; i++) {
             if (citationList.get(i) >= citationListSize - i) {
                 return citationListSize - i;
@@ -53,10 +62,13 @@ public class SortProblem {
     }
 
     public static String sortStringBySize(String T) {
-        return T.codePoints().mapToObj(c -> (char)c)
-                .sorted(Comparator.reverseOrder()).map(Object::toString).collect(Collectors.joining());
+        return T
+                .codePoints()
+                .mapToObj(c -> (char) c)
+                .sorted(Comparator.reverseOrder())
+                .map(Object::toString)
+                .collect(Collectors.joining());
     }
-
 
 
     public static void main(String[] args) {

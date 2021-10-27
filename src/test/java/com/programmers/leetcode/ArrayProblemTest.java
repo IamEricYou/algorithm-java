@@ -51,4 +51,18 @@ class ArrayProblemTest {
         int result = maxProfit(num);
         Assertions.assertEquals(0, result);
     }
+
+    @Test
+    void maxProfitTest3() {
+        int[] num = {7, 4, 1, 2};
+        int result = maxProfit(num);
+        Assertions.assertEquals(1, result);
+    }
+
+    @Test
+    void maxProfitTest4() {
+        int[] num = {2, 4, 1};
+        int result = maxProfit(num);
+        Assertions.assertEquals(2, result);
+    }
 }
