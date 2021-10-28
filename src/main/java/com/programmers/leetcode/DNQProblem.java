@@ -17,6 +17,7 @@ public class DNQProblem {
         return left.get(left.size() - 1) > target ? divideArrayHalf(left, target) : divideArrayHalf(right, target);
     }
 
+    // https://leetcode.com/problems/search-insert-position/
     public static int searchInsert(int[] nums, int target) {
         List<Integer> numsList = Arrays.stream(nums).boxed().collect(Collectors.toList());
         if (numsList.contains(target)) return numsList.indexOf(target);
