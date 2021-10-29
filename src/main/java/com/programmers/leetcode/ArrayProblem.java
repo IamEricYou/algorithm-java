@@ -39,4 +39,18 @@ public class ArrayProblem {
         System.out.println("Arrays.toString(prices) = " + Arrays.toString(prices));
         return isEverPriceDown ? Arrays.stream(prices).max().getAsInt() : 0;
     }
+
+    public static int[] twoSum(int[] numbers, int target) {
+        int[] answer = new int[2];
+        for (int i = 0, numbersLength = numbers.length; i < numbersLength; i++) {
+            for (int j = i + 1; j < numbersLength; j++) {
+                if (numbers[i] + numbers[j] == target) {
+                    answer[0] = i + 1;
+                    answer[1] = j + 1;
+                    return answer;
+                }
+            }
+        }
+        return answer;
+    }
 }

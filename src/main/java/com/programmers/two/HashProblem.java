@@ -5,17 +5,17 @@ import java.util.*;
 public class HashProblem {
 
     public static String unableCompleteRacing(String[] participant, String[] completion) {
-        ArrayList<String> participantList = new ArrayList<String>( Arrays.asList(participant) );
-        ArrayList<String> completionList = new ArrayList<String>( Arrays.asList(completion) );
+        ArrayList<String> participantList = new ArrayList<String>(Arrays.asList(participant));
+        ArrayList<String> completionList = new ArrayList<String>(Arrays.asList(completion));
 
         Collections.sort(participantList);
         Collections.sort(completionList);
-        for (int i = 0, completionListSize=completionList.size(); i < completionListSize; i++) {
+        for (int i = 0, completionListSize = completionList.size(); i < completionListSize; i++) {
             if (!participantList.get(i).equals(completionList.get(i))) {
                 return participantList.get(i);
             }
         }
-        return participantList.get(participantList.size()-1);
+        return participantList.get(participantList.size() - 1);
     }
 
     public static String unableCompleteRacingSolveByHash(String[] participant, String[] completion) {
@@ -42,7 +42,7 @@ public class HashProblem {
         phoneBookList.sort(Comparator.comparingInt(String::length));
 
         for (int i = 0, phoneBookListSize = phoneBookList.size(); i < phoneBookListSize; i++) {
-            for (int j = i+1; j < phoneBookListSize; j++) {
+            for (int j = i + 1; j < phoneBookListSize; j++) {
                 if (phoneBookList.get(j).startsWith(phoneBookList.get(i))) {
                     return false;
                 }
@@ -65,11 +65,11 @@ public class HashProblem {
 
         for (int i = 0, sLength = s.length(); i < sLength; i++) {
             int firstNum = romanSymbolMap.get(String.valueOf(s.charAt(i)));
-            if (i+1 == sLength) {
+            if (i + 1 == sLength) {
                 answer += firstNum;
                 break;
             }
-            int nextNum = romanSymbolMap.get(String.valueOf(s.charAt(i+1)));
+            int nextNum = romanSymbolMap.get(String.valueOf(s.charAt(i + 1)));
             if (firstNum >= nextNum) {
                 answer += firstNum;
             } else {
@@ -79,7 +79,12 @@ public class HashProblem {
         return answer;
     }
 
-    public static void main(String[] args) {
-        System.out.println("hash main");
+    // https://leetcode.com/problems/majority-element/
+    public static int majorityElement(int[] nums) {
+        Map<Integer, Integer> numMap = new HashMap<>();
+        for (int num : nums) {
+            numMap.put(num, numMap.getOrDefault(num, 0) + 1);
+        }
+        return Collections.max(numMap.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
     }
 }

@@ -1,11 +1,15 @@
 package com.programmers.leetcode;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import static com.programmers.leetcode.ArrayProblem.maxProfit;
-import static com.programmers.leetcode.ArrayProblem.maxSubArray;
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.stream.Stream;
+
+import static com.programmers.leetcode.ArrayProblem.*;
 
 class ArrayProblemTest {
 
@@ -64,5 +68,20 @@ class ArrayProblemTest {
         int[] num = {2, 4, 1};
         int result = maxProfit(num);
         Assertions.assertEquals(2, result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("twoSumTestCases")
+    @DisplayName("배열 two sum Test")
+    void twoSumTest(int[] numbers, int target, int[] expected) {
+        Assertions.assertArrayEquals(expected, twoSum(numbers, target));
+    }
+
+    static Stream<Arguments> twoSumTestCases() {
+        return Stream.of(
+                Arguments.of(new int[]{2, 7, 11, 15}, 9, new int[]{1, 2}),
+                Arguments.of(new int[]{2, 3, 4}, 6, new int[]{1, 3}),
+                Arguments.of(new int[]{-1, 0}, -1, new int[]{1, 2})
+        );
     }
 }

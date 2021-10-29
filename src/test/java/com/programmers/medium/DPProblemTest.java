@@ -39,7 +39,7 @@ class DPProblemTest {
         return Stream.of(
                 Arguments.of(new int[]{1, 2, 3, 1}, 4),
                 Arguments.of(new int[]{1, 5, 1, 5, 1}, 10),
-                Arguments.of(new int[]{1000, 0, 0, 1000, 0, 0, 1000, 0, 0, 1000}, 3000),
+                Arguments.of(new int[]{1000, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 1000}, 3000),
                 Arguments.of(new int[]{1000, 1, 0, 1, 2, 1000, 0}, 2001),
                 Arguments.of(new int[]{10, 2, 2, 100, 2}, 110)
         );
