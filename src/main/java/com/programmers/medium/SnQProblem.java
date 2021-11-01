@@ -19,7 +19,6 @@ public class SnQProblem {
             if ((100 - progresses[i]) % speeds[i] != 0) currentWorkToBeCompleted += 1;
             queue.add(currentWorkToBeCompleted);
         }
-
         int target = queue.poll();
         for (int q : queue) {
             if (target >= q) {
@@ -31,5 +30,10 @@ public class SnQProblem {
         }
         answerList.add(numberOfWork);
         return answerList.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    // https://programmers.co.kr/learn/courses/30/lessons/42626
+    public static int hotter(int[] scovile, int k) {
+        return 1;
     }
 }

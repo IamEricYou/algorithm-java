@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.programmers.medium.SnQProblem.developNewFeature;
+import static com.programmers.medium.SnQProblem.hotter;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SnQProblemTest {
@@ -34,4 +35,12 @@ class SnQProblemTest {
 
         Assertions.assertArrayEquals(r3, developNewFeature(p3, s3));
     }
+
+    @Test
+    void hotterTest1() {
+        int[] p3 = new int[]{1, 2, 3, 9, 10, 12};
+        int k = 7;
+        Assertions.assertEquals(2, hotter(p3, k));
+    }
+
 }

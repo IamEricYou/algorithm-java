@@ -8,8 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static com.programmers.leetcode.StringProblem.isPrefixString;
-import static com.programmers.leetcode.StringProblem.lengthOfLastWord;
+import static com.programmers.leetcode.StringProblem.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringProblemTest {
@@ -43,6 +42,23 @@ class StringProblemTest {
                 Arguments.of("ccccccccc", new String[]{"c", "cc"}, false),
                 Arguments.of("applebananacookie", new String[]{"banana", "apple", "cookie"}, false),
                 Arguments.of("aaa", new String[]{"aa", "aaa", "fjaklfj"}, false)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("testStringStream3")
+    @DisplayName("2021-11-02 생존테스트")
+    void isIsomorphicString(String targetString, String string, boolean expected) {
+        Assertions.assertEquals(expected, isIsomorphic(targetString, string));
+    }
+
+    static Stream<Arguments> testStringStream3() {
+        return Stream.of(
+                Arguments.of("egg", "add", true),
+                Arguments.of("foo", "bar", false),
+                Arguments.of("paper", "title", true),
+                Arguments.of("bbbaaaba", "aaabbbba", false),
+                Arguments.of("badc", "baba", false)
         );
     }
 }
